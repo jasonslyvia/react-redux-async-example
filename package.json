@@ -1,0 +1,50 @@
+{
+  "name": "react-redux-async-example",
+  "version": "0.0.1",
+  "description": "A react, redux, react-router, ajax working example",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonslyvia/react-redux-async-example.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "react-router",
+    "redux-example",
+    "react-redux"
+  ],
+  "author": "jasonslyvia <jasonslyvia@gmail.com> (http://undefinedblog.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasonslyvia/react-redux-async-example/issues"
+  },
+  "homepage": "https://github.com/jasonslyvia/react-redux-async-example",
+  "dependencies": {
+    "@ali/oneui": "~0.1.18",
+    "@ali/op-base": "~2.1.2",
+    "body-parser": "~1.13.2",
+    "express": "~4.13.1",
+    "react": "^0.13.3",
+    "react-redux": "^0.2.2",
+    "redux": "^1.0.0-rc",
+    "request": "~2.60.0"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "~2.0.0",
+    "babel": "~5.8.9",
+    "babel-core": "~5.8.9",
+    "babel-loader": "~5.3.2",
+    "css-loader": "~0.15.6",
+    "node-sass": "~3.2.0",
+    "react-hot-loader": "~1.2.8",
+    "sass-loader": "~1.0.3",
+    "style-loader": "~0.12.3",
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "~1.10.1"
+  }
+}
