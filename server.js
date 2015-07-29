@@ -41,10 +41,11 @@ webpackDevServer.listen(port, host, () => {
 /**
  * Start API server
  */
-import apikey as 'apikey';
-const API = 'http://apis.baidu.com/apistore/movie/cinema';
+import apikey from './apikey';
+const channelUrl = 'http://apis.baidu.com/showapi_open_bus/channel_news/channel_news';
+const detailUrl = 'http://apis.baidu.com/showapi_open_bus/channel_news/search_news';
+
 const options = {
-  url: API,
   headers: {
     apikey
   }
@@ -55,16 +56,39 @@ app.use(bodyParser.json({extended: true}));
 app.use(bodyParser.urlencoded({extended: true}));
 
 const router = express.Router();
-router.route('/api/movies')
+router.route('/api/channels/:channelId')
 .get((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+
+  let params = {
+    ...req.query
+  };
+
+  if (req.params.channelId && req.params.channelId !== 'undefined') {
+    params.channelId = req.params.channelId;
+  }
+
   request({
     ...options,
-    url: `${API}?${querystring.stringify(req.query)}`
+    url: `${detailUrl}?${querystring.stringify(params)}`
   }, (error, response, body) => {
     if (!error && response.statusCode === 200) {
       res.json(JSON.parse(body));
     }
   });
+});
+
+router.route('/api/channels')
+.get((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  request({
+    ...options,
+    url: `${channelUrl}?${querystring.stringify(req.query)}`
+  }, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+      res.json(JSON.parse(body));
+    }
+  })
 });
 
 app.use(router);

@@ -1,0 +1,76 @@
+body, html {
+  background: #ccc;
+  overflow: hidden;
+  height: 100%;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+
+.dialog-overlay {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  transition: opacity .3s ease-out;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+    border: 1px #ccc solid;
+    background: #fff;
+    padding: 20px 40px;
+
+    .title {
+      margin: 0;
+    }
+
+    .image-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      img {
+        float: left;
+        max-width: 200px;
+      }
+    }
+  }
+
+  .close {
+    float: right;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+      color: #f40;
+    }
+  }
+}
+
+@keyframe fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

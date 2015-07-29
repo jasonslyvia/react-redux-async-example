@@ -5,7 +5,7 @@ const host = '127.0.0.1';
 const port = 7260;
 
 export default {
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   context: path.resolve(__dirname, '.'),
   entry: {
     main: [
@@ -24,14 +24,14 @@ export default {
   module: {
     loaders: [{
       test: /\.jsx?/,
-      exclude: /node_modules/,
+      include: /src/,
       loaders: [
         'react-hot',
         'babel?stage=0&loose=all'
       ]
     }, {
       test: /\.scss/,
-      loader: `style!css?modules&importLoaders=2&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true`
+      loader: `style!css!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true`
     }]
   },
 

@@ -1,0 +1,26 @@
+
+.search-wrapper {
+  margin: 20px 0;
+
+  .news-search {
+    vertical-align: top;
+    border-radius: 0;
+    border: 1px #ccc solid;
+    line-height: 32px;
+    outline: none;
+    padding-left: 20px;
+    width: 700px;
+  }
+
+  .search-btn {
+    margin-left: 10px;
+    vertical-align: top;
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    line-height: 36px;
+    background: #34a0e7;
+    color: #fff;
+    cursor: pointer;
+  }
+}

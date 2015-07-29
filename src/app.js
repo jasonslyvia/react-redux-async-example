@@ -1,26 +1,35 @@
 import React from 'react';
-import {createStore, bindActionCreators, combineReducers} from 'redux';
+import {createStore, bindActionCreators, combineReducers, applyMiddleware} from 'redux';
 import {provide, connect} from 'react-redux';
+import promiseMiddleware from 'redux-promise-middleware';
 
-import * as reducers from './reducers/stock';
-import * as actions from './actions/StockActions';
+import * as reducers from './reducers/news';
+import * as actions from './actions/NewsActions';
 
-import Stock from './components/Stock';
+import Channels from './components/Channels';
+import News from './components/News';
+import Search from './components/Search';
 
+import './main.scss';
 
-const store = createStore(combineReducers(reducers));
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
+const store = createStoreWithMiddleware(combineReducers(reducers));
 const boundActionCreators = bindActionCreators(actions, store.dispatch);
 
 @provide(store)
 @connect(function (state){
   return {
-    stock: state.stock
+    news: state.news
   };
 })
 class App extends React.Component {
   render() {
     return (
-      <Stock stock={this.props.stock} {...boundActionCreators} />
+      <div className="container">
+        <Search news={this.props.news} {...boundActionCreators} />
+        <Channels news={this.props.news} {...boundActionCreators} />
+        <News news={this.props.news} {...boundActionCreators} />
+      </div>
     );
   }
 }

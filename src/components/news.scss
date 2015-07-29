@@ -1,0 +1,40 @@
+.news-container {
+  overflow: hidden;
+  clear: both;
+  margin-top: 50px;
+
+  .loading,
+  .error {
+    display: block;
+    text-align: center;
+  }
+
+  .news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .news-item {
+    line-height: 22px;
+
+    .source {
+      display: inline-block;
+      width: 45px;
+    }
+
+    .date {
+      float: right;
+    }
+
+    .detail-btn {
+      float: right;
+      cursor: pointer;
+      margin-left: 4px;
+
+      &:hover {
+        color: #f40;
+      }
+    }
+  }
+}

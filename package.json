@@ -25,14 +25,15 @@
   },
   "homepage": "https://github.com/jasonslyvia/react-redux-async-example",
   "dependencies": {
-    "@ali/oneui": "~0.1.18",
-    "@ali/op-base": "~2.1.2",
+    "@ali/oneui-expr": "~1.0.8",
     "body-parser": "~1.13.2",
     "express": "~4.13.1",
     "react": "^0.13.3",
     "react-redux": "^0.2.2",
     "redux": "^1.0.0-rc",
-    "request": "~2.60.0"
+    "redux-promise-middleware": "^0.1.0",
+    "request": "~2.60.0",
+    "superagent": "~1.2.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "~2.0.0",
