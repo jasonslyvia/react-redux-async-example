@@ -3,7 +3,7 @@ import {createStore, bindActionCreators, combineReducers, applyMiddleware, compo
 import {devTools, persistState} from 'redux-devtools';
 import {DevTools} from 'redux-devtools/lib/react';
 import {provide, connect} from 'react-redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import getNewsMiddleware from './middlewares/getNewsMiddleware';
 import DiffMonitor from 'redux-devtools-diff-monitor';
 
 import * as reducers from './reducers/news';
@@ -16,7 +16,7 @@ import Search from './components/Search';
 import './main.scss';
 
 const finalCreateStore = compose(
-  applyMiddleware(promiseMiddleware),
+  applyMiddleware(getNewsMiddleware),
   devTools(),
   persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
   createStore

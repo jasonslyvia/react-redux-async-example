@@ -3,3 +3,5 @@ node_modules/
 .DS_Store
 
 apikey.js
+
+npm-debug.log

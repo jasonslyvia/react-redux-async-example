@@ -32,7 +32,7 @@ export function news(state = initState, action) {
     case CHANNELS_LOAD_SUCCESS: {
       return {
         ...state,
-        channels: action.payload,
+        channels: action.data,
         channelsReady: true,
         channelsError: false
       };
@@ -49,6 +49,7 @@ export function news(state = initState, action) {
     case NEWS_LOAD: {
       return {
         ...state,
+        channelId: action.params.channelId,
         newsReady: false,
         newsError: false
       };
@@ -57,8 +58,9 @@ export function news(state = initState, action) {
     case NEWS_LOAD_SUCCESS: {
       return {
         ...state,
-        channelId: action.payload.channelId,
-        news: action.payload.news,
+        channelId: action.params.channelId,
+        keyword: action.params.keyword,
+        news: action.data,
         newsReady: true,
         newsError: false
       };
@@ -67,7 +69,7 @@ export function news(state = initState, action) {
     case NEWS_LOAD_ERROR: {
       return {
         ...state,
-        channelId: action.payload.channelId,
+        channelId: action.params.channelId,
         newsReady: true,
         newsError: true
       };

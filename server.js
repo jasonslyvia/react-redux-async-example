@@ -56,6 +56,8 @@ app.use(bodyParser.json({extended: true}));
 app.use(bodyParser.urlencoded({extended: true}));
 
 const router = express.Router();
+
+// 加载单个频道下的新闻
 router.route('/api/channels/:channelId')
 .get((req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -73,11 +75,17 @@ router.route('/api/channels/:channelId')
     url: `${detailUrl}?${querystring.stringify(params)}`
   }, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      res.json(JSON.parse(body));
+      const data = JSON.parse(body);
+      res.json({
+        data: data.showapi_res_body.pagebean.contentlist,
+        code: data.showapi_res_body.ret_code
+      });
     }
   });
 });
 
+
+// 加载频道列表
 router.route('/api/channels')
 .get((req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -86,7 +94,11 @@ router.route('/api/channels')
     url: `${channelUrl}?${querystring.stringify(req.query)}`
   }, (error, response, body) => {
     if (!error && response.statusCode === 200) {
-      res.json(JSON.parse(body));
+      const data =  JSON.parse(body);
+      res.json({
+        data: data.showapi_res_body.channelList,
+        code: data.showapi_res_code
+      });
     }
   })
 });

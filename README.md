@@ -5,11 +5,12 @@ A react, redux, ajax working example.
 ## To start
 
 ```
+$ git clone git@github.com:jasonslyvia/react-redux-async-example.git && cd react-redux-async-example
 $ npm install
 $ npm run start
 ```
 
-Then browser `http://127.0.0.1:7260/`.
+Then browse `http://127.0.0.1:7260/`.
 
 Since the data source is based on Baidu API, you have to provide a API key from [Baidu API Store](http://apistore.baidu.com/). Export it as a string in `./apikey.js`.
 

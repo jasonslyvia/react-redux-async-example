@@ -31,7 +31,6 @@
     "react": "^0.13.3",
     "react-redux": "^0.2.2",
     "redux": "^1.0.0-rc",
-    "redux-promise-middleware": "^0.1.0",
     "request": "~2.60.0",
     "superagent": "~1.2.0"
   },
