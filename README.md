@@ -5,6 +5,7 @@ A react, redux, ajax working example.
 ## To start
 
 ```
+$ npm install
 $ npm run start
 ```
 
