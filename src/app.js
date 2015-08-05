@@ -1,7 +1,10 @@
 import React from 'react';
-import {createStore, bindActionCreators, combineReducers, applyMiddleware} from 'redux';
+import {createStore, bindActionCreators, combineReducers, applyMiddleware, compose} from 'redux';
+import {devTools, persistState} from 'redux-devtools';
+import {DevTools} from 'redux-devtools/lib/react';
 import {provide, connect} from 'react-redux';
 import promiseMiddleware from 'redux-promise-middleware';
+import DiffMonitor from 'redux-devtools-diff-monitor';
 
 import * as reducers from './reducers/news';
 import * as actions from './actions/NewsActions';
@@ -12,8 +15,14 @@ import Search from './components/Search';
 
 import './main.scss';
 
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware)(createStore);
-const store = createStoreWithMiddleware(combineReducers(reducers));
+const finalCreateStore = compose(
+  applyMiddleware(promiseMiddleware),
+  devTools(),
+  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
+  createStore
+);
+
+const store = finalCreateStore(combineReducers(reducers));
 const boundActionCreators = bindActionCreators(actions, store.dispatch);
 
 @provide(store)
@@ -29,6 +38,17 @@ class App extends React.Component {
         <Search news={this.props.news} {...boundActionCreators} />
         <Channels news={this.props.news} {...boundActionCreators} />
         <News news={this.props.news} {...boundActionCreators} />
+        <DevTools store={store}
+                  select={(state) => {
+                    const {channelsReady, channelId, newsReady, newsId} = state.news;
+                    return {
+                      channelsReady,
+                      channelId,
+                      newsReady,
+                      newsId
+                    };
+                  }}
+                  monitor={DiffMonitor} />
       </div>
     );
   }

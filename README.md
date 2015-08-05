@@ -20,6 +20,8 @@ Since the data source is based on Baidu API, you have to provide a API key from 
  - react-redux
  - superagent (for ajax)
  - redux-promise-middle-ware
+ - redux-devtool
+ - redux-devtools-diff-monitor
 
 ## Screenshot
 
