@@ -1,9 +1,12 @@
 import React from 'react';
 import {createStore, bindActionCreators, combineReducers, applyMiddleware, compose} from 'redux';
+import {provide, connect} from 'react-redux';
+
 import {devTools, persistState} from 'redux-devtools';
 import {DevTools} from 'redux-devtools/lib/react';
-import {provide, connect} from 'react-redux';
+
 import getNewsMiddleware from './middlewares/getNewsMiddleware';
+
 import DiffMonitor from 'redux-devtools-diff-monitor';
 
 import * as reducers from './reducers/news';
