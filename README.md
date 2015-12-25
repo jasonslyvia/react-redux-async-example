@@ -1,5 +1,7 @@
 # react-redux-async-example
 
+**CAUTION: Some dependencies of this repo are outdated, APIs might be changed.** 
+
 A react, redux, ajax working example.
 
 ## To start
